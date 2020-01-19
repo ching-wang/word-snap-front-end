@@ -3,14 +3,27 @@ import "./App.css";
 import Header from "./components/Header";
 import GameIndex from "./gameIndex";
 import LoginForm from "./components/LoginForm";
-const NewGame = "http://localhost:3001/newgame";
+import { getPairs } from "./API";
+
+const NewGame = "http://localhost:3000/newgame";
+
 class App extends Component {
   state = {
     player_1: "",
     player_2: "",
     gameOn: false,
-    players: {}
+    players: {},
+    pairs: []
   };
+
+  componentDidMount() {
+    getPairs().then(pairs =>
+      this.setState({
+        pairs
+      })
+    );
+  }
+
   login = (player_1, player_2) => {
     fetch(NewGame, {
       method: "POST",
@@ -31,11 +44,12 @@ class App extends Component {
   };
 
   render() {
+    const { pairs } = this.state;
     return (
       <>
         <Header />
         {!this.state.gameOn && <LoginForm handleLogin={this.login} />}
-        {this.state.gameOn && <GameIndex />}{" "}
+        {this.state.gameOn && <GameIndex pairsToRender={pairs} />}{" "}
       </>
     );
   }

@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 
 class Card extends Component {
-  state = {};
   render() {
+    const { pair } = this.props;
+
     return (
-      <>
-        <h5>this is card component</h5>
-      </>
+      <div className="card text-white bg-dark">
+        <div className="card-body">
+          <h5 class="card-title">{pair.chinese}</h5>
+          <h5 class="card-title">{pair.english}</h5>
+        </div>
+      </div>
     );
   }
 }
