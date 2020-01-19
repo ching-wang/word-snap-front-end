@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import Card from "./Card";
 
 class GameBoard extends Component {
-  state = {};
   render() {
+    const { pairsToRender } = this.props;
     return (
       <>
         <h1> This is GameBoard </h1>
