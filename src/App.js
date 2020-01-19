@@ -13,15 +13,18 @@ class App extends Component {
     player_2: "",
     gameOn: false,
     players: {},
-    pairs: []
+    pairs: [],
+    faceUpCards: [],
+    doneCards: {}
   };
 
   componentDidMount() {
-    getPairs().then(pairs =>
+    getPairs().then(pairs => {
+      pairs.sort(() => 0.5 - Math.random());
       this.setState({
-        pairs
-      })
-    );
+        pairs: pairs.slice(0, 8)
+      });
+    });
   }
 
   login = (player_1, player_2) => {
