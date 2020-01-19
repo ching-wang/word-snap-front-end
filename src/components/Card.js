@@ -1,14 +1,33 @@
 import React, { Component } from "react";
 
 class Card extends Component {
+  state = {
+    faceUp: false
+  };
+
+  handleClick() {
+    console.log("CLICK");
+    this.setState({ faceUp: !this.state.faceUp });
+  }
+
   render() {
-    const { pair } = this.props;
+    const { singleWord } = this.props;
 
     return (
-      <div className="card text-white bg-dark">
+      <div
+        className="card text-white bg-dark"
+        onClick={() => this.handleClick()}
+      >
         <div className="card-body">
-          <h5 class="card-title">{pair.chinese}</h5>
-          <h5 class="card-title">{pair.english}</h5>
+          <h3 className="card-title">
+            <span
+              className={
+                singleWord.lang === "english" ? "text-info" : "text-danger"
+              }
+            >
+              {this.state.faceUp ? singleWord.word : "X"}
+            </span>
+          </h3>
         </div>
       </div>
     );
