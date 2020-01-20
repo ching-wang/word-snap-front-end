@@ -1,21 +1,18 @@
 import React, { Component } from "react";
 
 class Card extends Component {
-  state = {
-    faceUp: false
-  };
-
-  handleClick() {
-    this.setState({ faceUp: !this.state.faceUp });
-  }
-
   render() {
-    const { singleWord, handleFaceUpCards } = this.props;
+    const {
+      singleWord,
+      handleFaceUpCards,
+      faceUpCardsArray,
+      faceUpWords
+    } = this.props;
 
     return (
       <div
         className="card text-white bg-dark"
-        onClick={() => handleFaceUpCards(singleWord.pairId)}
+        onClick={() => handleFaceUpCards(singleWord)}
       >
         <div className="card-body">
           <h3 className="card-title">
@@ -24,7 +21,10 @@ class Card extends Component {
                 singleWord.lang === "english" ? "text-info" : "text-danger"
               }
             >
-              {this.state.faceUp ? singleWord.word : "X"}
+              {faceUpCardsArray.includes(singleWord.pairId) &&
+              faceUpWords.includes(singleWord.word)
+                ? singleWord.word
+                : "X"}
             </span>
           </h3>
         </div>

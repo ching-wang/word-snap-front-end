@@ -3,7 +3,7 @@ import Card from "./Card";
 
 class GameBoard extends Component {
   singleWords() {
-    const { pairsToRender } = this.props;
+    const { pairsToRender, faceUp } = this.props;
 
     const singleWords = [];
     for (const pair of pairsToRender) {
@@ -26,7 +26,7 @@ class GameBoard extends Component {
   }
 
   render() {
-    const { handleFaceUpCards } = this.props;
+    const { handleFaceUpCards, faceUpCardsArray, faceUpWords } = this.props;
     const singleWords = this.singleWords();
     return (
       <>
@@ -34,13 +34,14 @@ class GameBoard extends Component {
         <div className="container">
           <div className="row">
             {singleWords.map((singleWord, i) => {
-              debugger;
               return (
                 <Fragment key={`${singleWord.pairId}-${singleWord.lang}`}>
                   <div className="col">
                     <Card
                       singleWord={singleWord}
                       handleFaceUpCards={handleFaceUpCards}
+                      faceUpCardsArray={faceUpCardsArray}
+                      faceUpWords={faceUpWords}
                     />
                   </div>
                   {(i + 1) % 4 === 0 ? (
