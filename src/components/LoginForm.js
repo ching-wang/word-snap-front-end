@@ -27,8 +27,8 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <div>
+      <form onSubmit={this.handleSubmit} className="form-group">
+        <div className="form-group mb-2">
           <label>
             Player 1
             <input
@@ -37,6 +37,7 @@ class LoginForm extends React.Component {
               type="text"
               onChange={this.handleChange}
               value={this.state.user_1}
+              className="form-control"
             />
           </label>
         </div>
@@ -49,11 +50,14 @@ class LoginForm extends React.Component {
               type="text"
               onChange={this.handleChange}
               value={this.state.user_2}
+              className="form-control"
             />
           </label>
         </div>
         <div>
-          <button type="submit">Start a game</button>
+          <button className="btn btn-dark" type="submit">
+            Start a game
+          </button>
         </div>
       </form>
     );
