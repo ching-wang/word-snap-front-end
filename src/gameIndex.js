@@ -4,12 +4,19 @@ import GameBoard from "./components/GameBoard";
 
 class GameIndex extends Component {
   render() {
-    const { pairsToRender, handleFaceUpCards } = this.props;
+    const {
+      pairsToRender,
+      handleFaceUpCards,
+      faceUpCardsArray,
+      faceUpWords
+    } = this.props;
     return (
       <div>
         <GameBoard
           pairsToRender={pairsToRender}
           handleFaceUpCards={handleFaceUpCards}
+          faceUpCardsArray={faceUpCardsArray}
+          faceUpWords={faceUpWords}
         />
       </div>
     );
