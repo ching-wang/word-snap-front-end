@@ -27,9 +27,8 @@ class App extends Component {
 
   componentDidMount() {
     getPairs().then(pairs => {
-      pairs.sort(() => 0.5 - Math.random());
       this.setState({
-        pairs: pairs.slice(0, 8)
+        pairs
       });
     });
   }
@@ -45,16 +44,12 @@ class App extends Component {
       .then(resp => resp.json())
       .then(data => {
         console.log(data);
-        this.setState({ players: data });
+        this.setState({ players: data, gameOn: !this.state.gameOn });
       });
-
-    console.log(`player 1: ${player_1} player 2: ${player_2}`);
-
-    this.setState({ gameOn: !this.state.gameOn });
   };
 
   render() {
-    const { pairs, selectedCard, doneCards } = this.state;
+    const { pairs, selectedCard, doneCards, players } = this.state;
 
     return (
       <>
@@ -67,6 +62,7 @@ class App extends Component {
             selectedCard={selectedCard}
             doneCards={doneCards}
             handleDoneCard={this.handleDoneCard}
+            players={players}
           />
         )}
       </>
