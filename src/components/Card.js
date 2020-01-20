@@ -13,7 +13,7 @@ class Card extends Component {
 
     return (
       <div
-        className="card text-white bg-dark"
+        className="card text-white bg-dark word-card"
         onClick={() => {
           if (selectedCard === null) {
             handleSelectedCard(singleWord);
@@ -31,9 +31,16 @@ class Card extends Component {
                 singleWord.lang === "english" ? "text-info" : "text-danger"
               }
             >
-              {selectedCard !== null && selectedCard.word === singleWord.word
-                ? singleWord.word
-                : "X"}
+              {selectedCard !== null &&
+              selectedCard.word === singleWord.word ? (
+                singleWord.word
+              ) : (
+                <>
+                  X
+                  <br />
+                  &nbsp;
+                </>
+              )}
             </span>
           </h3>
         </div>
