@@ -1,18 +1,28 @@
 import React, { Component } from "react";
 
 class Card extends Component {
+  state = {};
   render() {
     const {
       singleWord,
-      handleFaceUpCards,
-      faceUpCardsArray,
-      faceUpWords
+      handleSelectedCard,
+      selectedCard,
+      doneCards,
+      handleDoneCard
     } = this.props;
 
     return (
       <div
         className="card text-white bg-dark"
-        onClick={() => handleFaceUpCards(singleWord)}
+        onClick={() => {
+          if (selectedCard === null) {
+            handleSelectedCard(singleWord);
+          } else {
+            if (selectedCard.pairId === singleWord.pairId) {
+              handleDoneCard(singleWord.pairId);
+            }
+          }
+        }}
       >
         <div className="card-body">
           <h3 className="card-title">
@@ -21,8 +31,7 @@ class Card extends Component {
                 singleWord.lang === "english" ? "text-info" : "text-danger"
               }
             >
-              {faceUpCardsArray.includes(singleWord.pairId) &&
-              faceUpWords.includes(singleWord.word)
+              {selectedCard !== null && selectedCard.word === singleWord.word
                 ? singleWord.word
                 : "X"}
             </span>

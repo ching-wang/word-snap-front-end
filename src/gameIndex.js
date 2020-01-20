@@ -6,17 +6,20 @@ class GameIndex extends Component {
   render() {
     const {
       pairsToRender,
-      handleFaceUpCards,
-      faceUpCardsArray,
-      faceUpWords
+      handleSelectedCard,
+      selectedCard,
+      doneCards,
+      handleDoneCard
     } = this.props;
+    console.log(this.props);
     return (
       <div>
         <GameBoard
           pairsToRender={pairsToRender}
-          handleFaceUpCards={handleFaceUpCards}
-          faceUpCardsArray={faceUpCardsArray}
-          faceUpWords={faceUpWords}
+          handleSelectedCard={handleSelectedCard}
+          selectedCard={selectedCard}
+          doneCards={doneCards}
+          handleDoneCard={handleDoneCard}
         />
       </div>
     );
