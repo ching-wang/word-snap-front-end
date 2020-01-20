@@ -26,6 +26,7 @@ class GameBoard extends Component {
   }
 
   render() {
+    const { handleFaceUpCards } = this.props;
     const singleWords = this.singleWords();
     return (
       <>
@@ -36,7 +37,10 @@ class GameBoard extends Component {
               return (
                 <Fragment key={`${singleWord.pairId}-${singleWord.lang}`}>
                   <div className="col">
-                    <Card singleWord={singleWord} />
+                    <Card
+                      singleWord={singleWord}
+                      handleFaceUpCards={handleFaceUpCards}
+                    />
                   </div>
                   {(i + 1) % 4 === 0 ? (
                     <>

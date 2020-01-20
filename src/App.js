@@ -18,6 +18,16 @@ class App extends Component {
     doneCards: {}
   };
 
+  handleFaceUpCards = card_id => {
+    this.setState({
+      faceUpCards: [...this.state.faceUpCards, card_id]
+    });
+
+    // if (this.state.faceUpCards.length === 2) {
+    //   this.setState
+    // }
+  };
+
   componentDidMount() {
     getPairs().then(pairs => {
       pairs.sort(() => 0.5 - Math.random());
@@ -48,11 +58,17 @@ class App extends Component {
 
   render() {
     const { pairs } = this.state;
+    console.log(this.state.faceUpCards);
     return (
       <>
         <Header />
         {!this.state.gameOn && <LoginForm handleLogin={this.login} />}
-        {this.state.gameOn && <GameIndex pairsToRender={pairs} />}{" "}
+        {this.state.gameOn && (
+          <GameIndex
+            pairsToRender={pairs}
+            handleFaceUpCards={this.handleFaceUpCards}
+          />
+        )}
       </>
     );
   }

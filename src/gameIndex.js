@@ -4,10 +4,13 @@ import GameBoard from "./components/GameBoard";
 
 class GameIndex extends Component {
   render() {
-    const { pairsToRender } = this.props;
+    const { pairsToRender, handleFaceUpCards } = this.props;
     return (
       <div>
-        <GameBoard pairsToRender={pairsToRender} />
+        <GameBoard
+          pairsToRender={pairsToRender}
+          handleFaceUpCards={handleFaceUpCards}
+        />
       </div>
     );
   }

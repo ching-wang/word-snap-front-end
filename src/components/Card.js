@@ -11,12 +11,12 @@ class Card extends Component {
   }
 
   render() {
-    const { singleWord } = this.props;
+    const { singleWord, handleFaceUpCards } = this.props;
 
     return (
       <div
         className="card text-white bg-dark"
-        onClick={() => this.handleClick()}
+        onClick={() => handleFaceUpCards(singleWord.pairId)}
       >
         <div className="card-body">
           <h3 className="card-title">
