@@ -33,6 +33,7 @@ class GameBoard extends Component {
         <div className="container">
           <div className="row">
             {singleWords.map((singleWord, i) => {
+              debugger;
               return (
                 <Fragment key={`${singleWord.pairId}-${singleWord.lang}`}>
                   <div className="col">

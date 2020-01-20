@@ -6,7 +6,6 @@ class Card extends Component {
   };
 
   handleClick() {
-    console.log("CLICK");
     this.setState({ faceUp: !this.state.faceUp });
   }
 
