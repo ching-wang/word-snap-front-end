@@ -4,7 +4,7 @@ export class Player extends Component {
   render() {
     return (
       <div>
-        <h3>This is player Component</h3>
+        <p>This is player Component</p>
       </div>
     );
   }

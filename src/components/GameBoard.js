@@ -30,7 +30,6 @@ class GameBoard extends Component {
     const singleWords = this.singleWords();
     return (
       <>
-        <h1> This is GameBoard </h1>
         <div className="container">
           <div className="row">
             {singleWords.map((singleWord, i) => {
