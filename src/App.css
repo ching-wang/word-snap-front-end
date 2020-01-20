@@ -6,3 +6,22 @@
   font-family: sans-serif;
   text-align: center;
 }
+
+.card-row-separator {
+  margin: 1em;
+}
+
+.word-card {
+  cursor: pointer;
+  border-radius: 0.25em;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+  padding: 3em;
+
+  transition: border 0.5s ease;
+  transition: box-shadow 0.5s ease;
+}
+
+.word-card:hover {
+  border: 1px outset white;
+  box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.5);
+}

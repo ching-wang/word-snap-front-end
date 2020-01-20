@@ -3,7 +3,7 @@ import Card from "./Card";
 
 class GameBoard extends Component {
   singleWords() {
-    const { pairsToRender} = this.props;
+    const { pairsToRender } = this.props;
 
     const singleWords = [];
     for (const pair of pairsToRender) {
@@ -50,10 +50,7 @@ class GameBoard extends Component {
                     />
                   </div>
                   {(i + 1) % 4 === 0 ? (
-                    <>
-                      <hr></hr>
-                      <div className="w-100"></div>
-                    </>
+                    <div className="w-100 card-row-separator"></div>
                   ) : (
                     ""
                   )}
