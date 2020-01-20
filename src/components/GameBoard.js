@@ -3,7 +3,7 @@ import Card from "./Card";
 
 class GameBoard extends Component {
   singleWords() {
-    const { pairsToRender, faceUp } = this.props;
+    const { pairsToRender} = this.props;
 
     const singleWords = [];
     for (const pair of pairsToRender) {
@@ -20,13 +20,18 @@ class GameBoard extends Component {
     }
 
     // Shuffle the array of single words.
-    singleWords.sort(() => 0.5 - Math.random());
+    // singleWords.sort(() => 0.5 - Math.random());
 
     return singleWords;
   }
 
   render() {
-    const { handleFaceUpCards, faceUpCardsArray, faceUpWords } = this.props;
+    const {
+      handleSelectedCard,
+      selectedCard,
+      doneCards,
+      handleDoneCard
+    } = this.props;
     const singleWords = this.singleWords();
     return (
       <>
@@ -38,9 +43,10 @@ class GameBoard extends Component {
                   <div className="col">
                     <Card
                       singleWord={singleWord}
-                      handleFaceUpCards={handleFaceUpCards}
-                      faceUpCardsArray={faceUpCardsArray}
-                      faceUpWords={faceUpWords}
+                      handleSelectedCard={handleSelectedCard}
+                      selectedCard={selectedCard}
+                      doneCards={doneCards}
+                      handleDoneCard={handleDoneCard}
                     />
                   </div>
                   {(i + 1) % 4 === 0 ? (

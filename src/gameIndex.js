@@ -7,10 +7,12 @@ class GameIndex extends Component {
   render() {
     const {
       pairsToRender,
-      handleFaceUpCards,
-      faceUpCardsArray,
-      faceUpWords
+      handleSelectedCard,
+      selectedCard,
+      doneCards,
+      handleDoneCard
     } = this.props;
+    console.log(this.props);
     return (
       <div className="container">
         <div className="row">
@@ -19,17 +21,19 @@ class GameIndex extends Component {
           </div>
           <div className="col-10">
             <GameBoard
-              pairsToRender={pairsToRender}
-              handleFaceUpCards={handleFaceUpCards}
-              faceUpCardsArray={faceUpCardsArray}
-              faceUpWords={faceUpWords}
-            />
+          pairsToRender={pairsToRender}
+          handleSelectedCard={handleSelectedCard}
+          selectedCard={selectedCard}
+          doneCards={doneCards}
+          handleDoneCard={handleDoneCard}
+        />
           </div>
           <div className="col-1">
             <Player />
           </div>
         </div>
       </div>
+
     );
   }
 }

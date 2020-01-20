@@ -14,23 +14,15 @@ class App extends Component {
     gameOn: false,
     players: {},
     pairs: [],
-    faceUpCards: [],
-    faceUpWords: [],
-    doneCards: {}
+    selectedCard: null,
+    doneCards: []
   };
 
-  // toggleFaceCard() {
-  //   this.setState({ faceUp: !this.state.faceUp });
-  // }
-
-  handleFaceUpCards = pair => {
-    // event.preventDefault();
-    this.setState({
-      faceUpCards: [...this.state.faceUpCards, pair.pairId]
-    });
-    this.setState({
-      faceUpWords: [...this.state.faceUpWords, pair.word]
-    });
+  handleSelectedCard = pairId => {
+    this.setState({ selectedCard: pairId });
+  };
+  handleDoneCard = pairId => {
+    this.setState({ ...this.state.doneCards, pairId }, { selectedCard: null });
   };
 
   componentDidMount() {
@@ -62,9 +54,8 @@ class App extends Component {
   };
 
   render() {
-    const { pairs, faceUpCards, faceUpWords } = this.state;
-    console.log(this.state.faceUpCards);
-    console.log(this.state.faceUpWords);
+    const { pairs, selectedCard, doneCards } = this.state;
+
     return (
       <>
         <Header />
@@ -72,9 +63,10 @@ class App extends Component {
         {this.state.gameOn && (
           <GameIndex
             pairsToRender={pairs}
-            handleFaceUpCards={this.handleFaceUpCards}
-            faceUpCardsArray={faceUpCards}
-            faceUpWords={faceUpWords}
+            handleSelectedCard={this.handleSelectedCard}
+            selectedCard={selectedCard}
+            doneCards={doneCards}
+            handleDoneCard={this.handleDoneCard}
           />
         )}
       </>
