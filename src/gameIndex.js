@@ -15,7 +15,7 @@ class GameIndex extends Component {
       <div className="container">
         <div className="row">
           <div className="col-1">
-            <Player {}/>
+            <Player/>
           </div>
           <div className="col-10">
             <GameBoard
@@ -25,9 +25,9 @@ class GameIndex extends Component {
               faceUpWords={faceUpWords}
             />
           </div>
-         
         </div>
       </div>
+     
     );
   }
 }
