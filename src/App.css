@@ -1,5 +1,5 @@
 .App {
-  background-color: orange;
+  background-color: #ff851b;
   color: white;
   grid-template-columns: 2fr 8fr;
   padding: 1em;
@@ -15,10 +15,17 @@
   cursor: pointer;
   border-radius: 0.25em;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
-  padding: 3em;
-
+  padding: 45px;
   transition: border 0.5s ease;
   transition: box-shadow 0.5s ease;
+}
+
+.board-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
 }
 
 .word-card:hover {
@@ -28,7 +35,9 @@
 
 .time-panel {
   padding: 1em;
-  background-color: turquoise;
+  background-color: #dddddd;
+  color: black;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .game-board {
@@ -56,4 +65,8 @@
   font-size: 4em;
   font-family: "Baloo Bhai", cursive;
   /* font-family: "Rubik Mono One", sans-serif; */
+}
+
+.player-name {
+  font-family: "Luckiest Guy";
 }
