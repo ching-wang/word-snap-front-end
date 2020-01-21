@@ -11,7 +11,7 @@ class GameIndex extends Component {
   state = {
     currentPlayer: this.playerOne,
     click: 0,
-    time: 5
+    time: 120
   };
 
   componentDidMount() {

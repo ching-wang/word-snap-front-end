@@ -27,9 +27,10 @@ class LoginForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit} className="form-group">
-        <div className="form-group mb-2">
+        <div className="form-group">
           <br></br>
-          <label><br></br>
+          <label>
+            <br></br>
             Player 1
             <input
               id="username_1"
@@ -41,7 +42,7 @@ class LoginForm extends React.Component {
             />
           </label>
         </div>
-        <div>
+        <div className="form-group">
           <label>
             Player 2
             <input
@@ -54,7 +55,7 @@ class LoginForm extends React.Component {
             />
           </label>
         </div>
-        <div>
+        <div className="form-group">
           <button className="btn btn-dark" type="submit">
             Start a game
           </button>

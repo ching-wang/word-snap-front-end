@@ -5,8 +5,17 @@ export class Player extends Component {
     const { playerInfo, playerScore } = this.props;
     return (
       <div>
-        <h4 className="player-name">{playerInfo.player.username}</h4>
-        <div className="animaton-container">
+        <div
+          className={
+            this.props.currentPlayer === playerInfo
+              ? "animaton-container active-turn"
+              : "animaton-container"
+          }
+        >
+          <h4 className="player-name">{playerInfo.player.username}</h4>
+          <h3>
+            <span className="score">{playerScore}</span>
+          </h3>
           {this.props.currentPlayer === playerInfo ? (
             <h1>
               <br></br>
@@ -24,10 +33,6 @@ export class Player extends Component {
             </h1>
           ) : null}
         </div>
-
-        <h3>
-          <span className="score">{playerScore}</span>
-        </h3>
       </div>
     );
   }
