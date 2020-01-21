@@ -34,32 +34,30 @@ class GameBoard extends Component {
     } = this.props;
     const singleWords = this.singleWords();
     return (
-      <>
-        <div className="container">
-          <div className="row">
-            {singleWords.map((singleWord, i) => {
-              return (
-                <Fragment key={`${singleWord.pairId}-${singleWord.lang}`}>
-                  <div className="col">
-                    <Card
-                      singleWord={singleWord}
-                      handleSelectedCard={handleSelectedCard}
-                      doneCards={doneCards}
-                      handleDoneCard={handleDoneCard}
-                      onWrongCard={onWrongCard}
-                    />
-                  </div>
-                  {(i + 1) % 4 === 0 ? (
+      <div className="board-container">
+        {/* <div className="row"> */}
+        {singleWords.map((singleWord, i) => {
+          return (
+            <Fragment key={`${singleWord.pairId}-${singleWord.lang}`}>
+              {/* <div className="col"> */}
+              <Card
+                singleWord={singleWord}
+                handleSelectedCard={handleSelectedCard}
+                doneCards={doneCards}
+                handleDoneCard={handleDoneCard}
+                onWrongCard={onWrongCard}
+              />
+              {/* </div> */}
+              {/* {(i + 1) % 4 === 0 ? (
                     <div className="w-100 card-row-separator"></div>
                   ) : (
                     ""
-                  )}
-                </Fragment>
-              );
-            })}
-          </div>
-        </div>
-      </>
+                  )} */}
+            </Fragment>
+          );
+        })}
+      </div>
+      // </div>
     );
   }
 }

@@ -58,16 +58,14 @@ class Card extends Component {
           }
         }}
       >
-        <div className="card-body">
+        <div>
           <h3 className="card-title">
             <span
               className={
                 singleWord.lang === "english" ? "text-info" : "text-danger"
               }
             >
-
               {showing ? singleWord.word : "x"}
-
             </span>
           </h3>
         </div>
