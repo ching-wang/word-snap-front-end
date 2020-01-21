@@ -98,8 +98,7 @@ class App extends Component {
   };
 
   render() {
-    const { pairs, doneCards } = this.state;
-
+    const { pairs, doneCards, players } = this.state;
 
     return (
       <>
@@ -113,7 +112,6 @@ class App extends Component {
             handleDoneCard={this.handleDoneCard}
             onWrongCard={this.onWrongCard}
             players={players}
-
           />
         )}
       </>
