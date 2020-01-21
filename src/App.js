@@ -9,8 +9,6 @@ const NewGame = "http://localhost:3000/newgame";
 
 class App extends Component {
   state = {
-    player_1: "",
-    player_2: "",
     gameOn: false,
     players: {},
     pairs: [],
@@ -20,7 +18,18 @@ class App extends Component {
     singleWords: [],
     playerOneScore: 0,
     playerTwoScore: 0,
-    winner: null
+    winner: null,
+    currentPlayer: null
+  };
+
+  // changing turns
+
+  changePlayer = () => {
+    if (this.state.currentPlayer === this.state.players.game_player_1_info) {
+      this.setState({ currentPlayer: this.state.players.game_player_2_info });
+    } else {
+      this.setState({ currentPlayer: this.state.players.game_player_1_info });
+    }
   };
 
   singleWords = pairs => {
@@ -58,6 +67,7 @@ class App extends Component {
     this.setState({
       doneCards: [...this.state.doneCards, singleWord]
     });
+    this.changePlayer();
   };
 
   removeLastTwoCards = () => {
@@ -78,6 +88,7 @@ class App extends Component {
       this.setState({
         doneCards: cardsWithoutLastSelectedTwo
       });
+      this.changePlayer();
     });
 
     this.setState({ doneCards: [...this.state.doneCards, wordInfo] });
@@ -103,7 +114,11 @@ class App extends Component {
       .then(resp => resp.json())
       .then(data => {
         console.log(data);
-        this.setState({ players: data, gameOn: !this.state.gameOn });
+        this.setState({
+          players: data,
+          gameOn: !this.state.gameOn,
+          currentPlayer: data.game_player_1_info
+        });
       });
   };
 
@@ -127,7 +142,8 @@ class App extends Component {
       doneCards,
       players,
       playerOneScore,
-      playerTwoScore
+      playerTwoScore,
+      currentPlayer
     } = this.state;
 
     return (
@@ -144,6 +160,7 @@ class App extends Component {
             players={players}
             playerOneScore={playerOneScore}
             playerTwoScore={playerTwoScore}
+            currentPlayer={currentPlayer}
           />
         )}
       </>

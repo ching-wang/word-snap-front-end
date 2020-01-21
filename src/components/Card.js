@@ -38,8 +38,6 @@ class Card extends Component {
       <div
         className="card text-white bg-dark word-card"
         onClick={() => {
-          this.props.clickCount();
-
           if (this.hasFirstCardInTurnBeenSelected(doneCards) === false) {
             handleSelectedCard(singleWord);
           } else {
