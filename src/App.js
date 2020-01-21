@@ -67,6 +67,11 @@ class App extends Component {
     this.setState({
       doneCards: [...this.state.doneCards, singleWord]
     });
+    if (this.state.currentPlayer === this.state.players.game_player_1_info) {
+      this.setState({ playerOneScore: this.state.playerOneScore + 1 });
+    } else {
+      this.setState({ playerTwoScore: this.state.playerTwoScore + 1 });
+    }
     this.changePlayer();
   };
 
