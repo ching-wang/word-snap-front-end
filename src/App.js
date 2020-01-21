@@ -16,7 +16,27 @@ class App extends Component {
     pairs: [],
     doneCards: [],
     frozen: false,
-    intervalId: 0
+    intervalId: 0,
+    singleWords: []
+  };
+
+  singleWords = pairs => {
+    const singleWords = [];
+    for (const pair of pairs) {
+      singleWords.push({
+        pairId: pair.id,
+        word: pair.english,
+        lang: "english"
+      });
+      singleWords.push({
+        pairId: pair.id,
+        word: pair.chinese,
+        lang: "chinese"
+      });
+    }
+    // Shuffle the array of single words.
+
+    return singleWords;
   };
 
   handleSelectedCard = wordInfo => {
@@ -63,7 +83,8 @@ class App extends Component {
   componentDidMount() {
     getPairs().then(pairs => {
       this.setState({
-        pairs
+        pairs: pairs,
+        singleWords: this.singleWords(pairs).sort(() => 0.5 - Math.random())
       });
     });
   }
@@ -98,7 +119,7 @@ class App extends Component {
   };
 
   render() {
-    const { pairs, doneCards, players } = this.state;
+    const { singleWords, doneCards, players } = this.state;
 
     return (
       <>
@@ -106,7 +127,7 @@ class App extends Component {
         {!this.state.gameOn && <LoginForm handleLogin={this.login} />}
         {this.state.gameOn && (
           <GameIndex
-            pairsToRender={pairs}
+            pairsToRender={singleWords}
             handleSelectedCard={this.handleSelectedCard}
             doneCards={doneCards}
             handleDoneCard={this.handleDoneCard}
