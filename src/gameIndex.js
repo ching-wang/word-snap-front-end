@@ -7,9 +7,9 @@ class GameIndex extends Component {
     const {
       pairsToRender,
       handleSelectedCard,
-      selectedCard,
       doneCards,
       handleDoneCard,
+      onWrongCard,
       players
     } = this.props;
 
@@ -23,9 +23,9 @@ class GameIndex extends Component {
             <GameBoard
               pairsToRender={pairsToRender}
               handleSelectedCard={handleSelectedCard}
-              selectedCard={selectedCard}
               doneCards={doneCards}
               handleDoneCard={handleDoneCard}
+              onWrongCard={onWrongCard}
             />
           </div>
           <div className="col-1">

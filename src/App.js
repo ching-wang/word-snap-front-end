@@ -14,15 +14,50 @@ class App extends Component {
     gameOn: false,
     players: {},
     pairs: [],
-    selectedCard: null,
-    doneCards: []
+    doneCards: [],
+    frozen: false,
+    intervalId: 0
   };
 
-  handleSelectedCard = pairId => {
-    this.setState({ selectedCard: pairId });
+  handleSelectedCard = wordInfo => {
+    if (this.state.frozen === true) {
+      return;
+    }
+    this.setState({
+      doneCards: [...this.state.doneCards, wordInfo]
+    });
   };
-  handleDoneCard = pairId => {
-    this.setState({ ...this.state.doneCards, pairId }, { selectedCard: null });
+
+  handleDoneCard = singleWord => {
+    if (this.state.frozen === true) {
+      return;
+    }
+    this.setState({
+      doneCards: [...this.state.doneCards, singleWord]
+    });
+  };
+
+  removeLastTwoCards = () => {
+    let doneCards = [...this.state.doneCards];
+    doneCards.pop();
+    doneCards.pop();
+
+    return doneCards;
+  };
+
+  onWrongCard = wordInfo => {
+    if (this.state.frozen === true) {
+      return;
+    }
+
+    this.frozeGameFor(2, () => {
+      let cardsWithoutLastSelectedTwo = this.removeLastTwoCards();
+      this.setState({
+        doneCards: cardsWithoutLastSelectedTwo
+      });
+    });
+
+    this.setState({ doneCards: [...this.state.doneCards, wordInfo] });
   };
 
   componentDidMount() {
@@ -48,8 +83,23 @@ class App extends Component {
       });
   };
 
+  unfreezeGame = () => {
+    clearInterval(this.state.intervalId);
+    this.setState({ intervalId: 0, frozen: false });
+  };
+
+  frozeGameFor = (seconds, callback) => {
+    const secondsToMs = 1000;
+    let intervalId = setInterval(() => {
+      this.unfreezeGame();
+      callback();
+    }, seconds * secondsToMs);
+    this.setState({ intervalId: intervalId, frozen: true });
+  };
+
   render() {
-    const { pairs, selectedCard, doneCards, players } = this.state;
+    const { pairs, doneCards } = this.state;
+
 
     return (
       <>
@@ -59,10 +109,11 @@ class App extends Component {
           <GameIndex
             pairsToRender={pairs}
             handleSelectedCard={this.handleSelectedCard}
-            selectedCard={selectedCard}
             doneCards={doneCards}
             handleDoneCard={this.handleDoneCard}
+            onWrongCard={this.onWrongCard}
             players={players}
+
           />
         )}
       </>
