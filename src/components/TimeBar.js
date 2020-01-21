@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-const TimeBar = () => {
+const TimeBar = props => {
   return (
     <>
       <section className="time-panel">
