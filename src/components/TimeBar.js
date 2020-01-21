@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 
-const TimeBar = props => {
+const TimeBar = ({ timeCount }) => {
   return (
     <>
       <section className="time-panel">
         <div className="timeElapsed">
-          Time: <span>0</span>
+          Time left: <span className="timeCount">{timeCount}</span>
         </div>
       </section>
     </>

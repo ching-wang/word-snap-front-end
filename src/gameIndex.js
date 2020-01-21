@@ -10,7 +10,22 @@ class GameIndex extends Component {
 
   state = {
     currentPlayer: this.playerOne,
-    click: 0
+    click: 0,
+    time: 30
+  };
+
+  componentDidMount() {
+    this.interval = setInterval(this.timeCountDown, 1000);
+  }
+
+  timeCountDown = () => {
+    if (this.state.time <= 0) {
+      return;
+    }
+
+    this.setState(prevState => ({
+      time: (prevState.time -= 1)
+    }));
   };
 
   handleClickCount = () => {
@@ -43,7 +58,7 @@ class GameIndex extends Component {
 
     return (
       <>
-        <TimeBar />
+        <TimeBar timeCount={this.state.time} />
         <div className="container">
           <div className="row">
             <div className="col-1">
