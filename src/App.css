@@ -35,7 +35,7 @@
 
 .time-panel {
   padding: 1em;
-  background-color: #dddddd;
+  /* background-color: #dddddd; */
   color: black;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -69,4 +69,129 @@
 
 .player-name {
   font-family: "Luckiest Guy";
+}
+
+/* JUMPING Style */
+
+@import url("https://fonts.googleapis.com/css?family=Luckiest+Guy");
+/* BODY */
+
+::selection {
+  background: transparent;
+}
+
+.animaton-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: skyblue; */
+  /* background-image: linear-gradient(90deg, skyblue 0%, steelblue 100%); */
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  overflow: hidden;
+  font-family: "Luckiest Guy", cursive;
+  font-smoothing: antialiased;
+}
+/* CLOUDS */
+.animaton-container:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  margin: auto;
+  border-radius: 100%;
+  background: transparent;
+  display: block;
+  box-shadow: 0 0 150px 100px rgba(255, 255, 255, 0.6),
+    200px 0 200px 150px rgba(255, 255, 255, 0.6),
+    -250px 0 300px 150px rgba(255, 255, 255, 0.6),
+    550px 0 300px 200px rgba(255, 255, 255, 0.6),
+    -550px 0 300px 200px rgba(255, 255, 255, 0.6);
+}
+/* JUMP */
+.animaton-container h1 {
+  cursor: default;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+}
+
+.animaton-container h1 span {
+  position: relative;
+  top: 200px;
+
+  display: inline-flexbox;
+  animation: bounce 1s ease infinite alternate;
+  font-size: 20px;
+  color: #17a2b8;
+  text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc, 0 3px 0 #ccc, 0 4px 0 #ccc,
+    0 5px 0 #ccc, 0 6px 0 transparent, 0 7px 0 transparent, 0 8px 0 transparent,
+    0 9px 0 transparent, 0 10px 10px rgba(0, 0, 0, 0.4);
+}
+
+.animaton-container h1 span:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.animaton-container h1 span:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.animaton-container h1 span:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+.animaton-container h1 span:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+.animaton-container h1 span:nth-child(6) {
+  animation-delay: 0.5s;
+}
+
+.animaton-container h1 span:nth-child(7) {
+  animation-delay: 0.6s;
+}
+
+.animaton-container h1 span:nth-child(8) {
+  animation-delay: 0.2s;
+}
+
+.animaton-container h1 span:nth-child(9) {
+  animation-delay: 0.3s;
+}
+.animaton-container h1 span:nth-child(10) {
+  animation-delay: 0.4s;
+}
+
+.animaton-container h1 span:nth-child(11) {
+  animation-delay: 0.5s;
+}
+
+.animaton-container h1 span:nth-child(12) {
+  animation-delay: 0.6s;
+}
+
+/* ANIMATION */
+@keyframes bounce {
+  100% {
+    top: -20px;
+    text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc, 0 3px 0 #ccc, 0 4px 0 #ccc,
+      0 5px 0 #ccc, 0 6px 0 #ccc, 0 7px 0 #ccc, 0 8px 0 #ccc, 0 9px 0 #ccc,
+      0 50px 25px rgba(0, 0, 0, 0.2);
+  }
 }

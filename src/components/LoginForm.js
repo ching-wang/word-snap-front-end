@@ -18,7 +18,6 @@ class LoginForm extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log("hello");
 
     if (!this.state.user_1 || !this.state.user_2) return;
 
@@ -29,7 +28,8 @@ class LoginForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit} className="form-group">
         <div className="form-group mb-2">
-          <label>
+          <br></br>
+          <label><br></br>
             Player 1
             <input
               id="username_1"
