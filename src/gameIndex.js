@@ -39,30 +39,32 @@ class GameIndex extends Component {
     } = this.props;
 
     return (
-<TimeBar />
-      <div className="container">
-        <div className="row">
-          <div className="col-1">
-            <Player
-              playerInfo={this.playerOne}
-              currentPlayer={this.state.currentPlayer}
-            />
-          </div>
-          <div className="col-10">
-            <GameBoard
-              pairsToRender={pairsToRender}
-              handleSelectedCard={handleSelectedCard}
-              doneCards={doneCards}
-              handleDoneCard={handleDoneCard}
-              onWrongCard={onWrongCard}
-              clickCount={this.handleClickCount}
-            />
-          </div>
-          <div className="col-1">
-            <Player
-              playerInfo={this.playerTwo}
-              currentPlayer={this.state.currentPlayer}
-            />
+      <>
+        <TimeBar />
+        <div className="container game-board">
+          <div className="row">
+            <div className="col-1">
+              <Player
+                playerInfo={this.playerOne}
+                currentPlayer={this.state.currentPlayer}
+              />
+            </div>
+            <div className="col-10">
+              <GameBoard
+                pairsToRender={pairsToRender}
+                handleSelectedCard={handleSelectedCard}
+                doneCards={doneCards}
+                handleDoneCard={handleDoneCard}
+                onWrongCard={onWrongCard}
+                clickCount={this.handleClickCount}
+              />
+            </div>
+            <div className="col-1">
+              <Player
+                playerInfo={this.playerTwo}
+                currentPlayer={this.state.currentPlayer}
+              />
+            </div>
           </div>
         </div>
       </>
