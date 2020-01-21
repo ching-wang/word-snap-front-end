@@ -2,12 +2,12 @@ import React, { Component } from "react";
 
 export class Player extends Component {
   render() {
-    const { playerInfo, playerScore } = this.props;
+    const { playerInfo, playerScore, currentPlayer } = this.props;
     return (
       <div>
         <h4 className="player-name">{playerInfo.player.username}</h4>
         <div className="animaton-container">
-          {this.props.currentPlayer === playerInfo ? (
+          {currentPlayer === playerInfo ? (
             <h1>
               <br></br>
               <br></br>
