@@ -17,7 +17,10 @@ class App extends Component {
     doneCards: [],
     frozen: false,
     intervalId: 0,
-    singleWords: []
+    singleWords: [],
+    playerOneScore: 0,
+    playerTwoScore: 0,
+    winner: null
   };
 
   singleWords = pairs => {
@@ -119,7 +122,13 @@ class App extends Component {
   };
 
   render() {
-    const { singleWords, doneCards, players } = this.state;
+    const {
+      singleWords,
+      doneCards,
+      players,
+      playerOneScore,
+      playerTwoScore
+    } = this.state;
 
     return (
       <>
@@ -133,6 +142,8 @@ class App extends Component {
             handleDoneCard={this.handleDoneCard}
             onWrongCard={this.onWrongCard}
             players={players}
+            playerOneScore={playerOneScore}
+            playerTwoScore={playerTwoScore}
           />
         )}
       </>

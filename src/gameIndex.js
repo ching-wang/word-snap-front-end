@@ -7,6 +7,7 @@ import TimeBar from "./components/TimeBar";
 class GameIndex extends Component {
   playerOne = this.props.players.game_player_1_info;
   playerTwo = this.props.players.game_player_2_info;
+
   state = {
     currentPlayer: this.playerOne,
     click: 0
@@ -35,7 +36,9 @@ class GameIndex extends Component {
       handleSelectedCard,
       doneCards,
       handleDoneCard,
-      onWrongCard
+      onWrongCard,
+      playerOneScore,
+      playerTwoScore
     } = this.props;
 
     return (
@@ -47,6 +50,7 @@ class GameIndex extends Component {
               <Player
                 playerInfo={this.playerOne}
                 currentPlayer={this.state.currentPlayer}
+                playerScore={playerOneScore}
               />
             </div>
             <div className="col-10">
@@ -63,6 +67,7 @@ class GameIndex extends Component {
               <Player
                 playerInfo={this.playerTwo}
                 currentPlayer={this.state.currentPlayer}
+                playerScore={playerTwoScore}
               />
             </div>
           </div>
