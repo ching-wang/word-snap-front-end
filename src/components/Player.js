@@ -5,7 +5,7 @@ export class Player extends Component {
     const { playerInfo } = this.props;
     return (
       <div>
-        <h5>{playerInfo.player.username}</h5>
+        <h5>{playerInfo.player_id}</h5>
       </div>
     );
   }
