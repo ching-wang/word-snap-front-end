@@ -9,14 +9,15 @@ class GameIndex extends Component {
       handleSelectedCard,
       doneCards,
       handleDoneCard,
-      onWrongCard
+      onWrongCard,
+      players
     } = this.props;
-    console.log(this.props);
+
     return (
       <div className="container">
         <div className="row">
           <div className="col-1">
-            <Player />
+            <Player playerInfo={players.game_player_1_info} />
           </div>
           <div className="col-10">
             <GameBoard
@@ -28,7 +29,7 @@ class GameIndex extends Component {
             />
           </div>
           <div className="col-1">
-            <Player />
+            <Player playerInfo={players.game_player_2_info} />
           </div>
         </div>
       </div>

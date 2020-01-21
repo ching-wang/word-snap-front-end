@@ -62,9 +62,8 @@ class App extends Component {
 
   componentDidMount() {
     getPairs().then(pairs => {
-      pairs.sort(() => 0.5 - Math.random());
       this.setState({
-        pairs: pairs.slice(0, 8)
+        pairs
       });
     });
   }
@@ -80,12 +79,8 @@ class App extends Component {
       .then(resp => resp.json())
       .then(data => {
         console.log(data);
-        this.setState({ players: data });
+        this.setState({ players: data, gameOn: !this.state.gameOn });
       });
-
-    console.log(`player 1: ${player_1} player 2: ${player_2}`);
-
-    this.setState({ gameOn: !this.state.gameOn });
   };
 
   unfreezeGame = () => {
@@ -105,6 +100,7 @@ class App extends Component {
   render() {
     const { pairs, doneCards } = this.state;
 
+
     return (
       <>
         <Header />
@@ -116,6 +112,8 @@ class App extends Component {
             doneCards={doneCards}
             handleDoneCard={this.handleDoneCard}
             onWrongCard={this.onWrongCard}
+            players={players}
+
           />
         )}
       </>
