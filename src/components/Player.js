@@ -5,7 +5,11 @@ export class Player extends Component {
     const { playerInfo } = this.props;
     return (
       <div>
-        <h4 className="player-name">{playerInfo.player.username}</h4>
+       <h4 className="player-name">{playerInfo.player.username}</h4>
+        <p>
+          {this.props.currentPlayer === playerInfo ? "It is your turn" : null}
+        </p>
+       
         <h3>
           <span className="score">{playerInfo.score}</span>
         </h3>
