@@ -9,7 +9,7 @@ class GameIndex extends Component {
   state = {
     currentPlayer: this.playerOne,
     click: 0,
-    time: 120
+    time: 60
   };
 
   componentDidMount() {
@@ -61,8 +61,6 @@ class GameIndex extends Component {
       cancelButtonAriaLabel: ""
     });
   };
-
-  // componentDidMount()
 
   render() {
     const {

@@ -12,7 +12,7 @@ export class Player extends Component {
               : "animaton-container"
           }
         >
-          <h4 className="player-name">{playerInfo.player.username}</h4>
+          <h5 className="player-name">{playerInfo.player.username}</h5>
           <h3>
             <span className="score">{playerScore}</span>
           </h3>

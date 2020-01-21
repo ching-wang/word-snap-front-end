@@ -88,7 +88,7 @@ class App extends Component {
       return;
     }
 
-    this.frozeGameFor(2, () => {
+    this.frozeGameFor(0.5, () => {
       let cardsWithoutLastSelectedTwo = this.removeLastTwoCards();
       this.setState({
         doneCards: cardsWithoutLastSelectedTwo
@@ -118,7 +118,6 @@ class App extends Component {
     })
       .then(resp => resp.json())
       .then(data => {
-        console.log(data);
         this.setState({
           players: data,
           gameOn: !this.state.gameOn,
