@@ -197,5 +197,13 @@
 }
 
 .timeCount {
-  color: blue;
+  color: tomato;
+  background-color: white;
+  padding: 1px 10px 1px 10px;
+}
+
+.timeElapsed {
+  color: #17a2b8;
+  font-size: large;
+  font-weight: bold;
 }

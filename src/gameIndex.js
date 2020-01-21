@@ -11,7 +11,7 @@ class GameIndex extends Component {
   state = {
     currentPlayer: this.playerOne,
     click: 0,
-    time: 30
+    time: 5
   };
 
   componentDidMount() {
@@ -19,14 +19,17 @@ class GameIndex extends Component {
   }
 
   timeCountDown = () => {
-    if (this.state.time <= 0) {
-      return;
+    if (this.state.time <= 1) {
+      window.alert("GAME IS OVER! Would you like to play again?");
+      clearInterval(this.interval);
     }
 
     this.setState(prevState => ({
       time: (prevState.time -= 1)
     }));
   };
+
+  // componentDidMount()
 
   handleClickCount = () => {
     if (this.state.click === 0) {
