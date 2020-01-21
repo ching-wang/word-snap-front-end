@@ -6,6 +6,7 @@ import LoginForm from "./components/LoginForm";
 import { getPairs } from "./API";
 
 const NewGame = "http://localhost:3000/newgame";
+const SCOREUPDATE = "http://localhost:3000/player_games/";
 
 class App extends Component {
   state = {
@@ -126,6 +127,14 @@ class App extends Component {
       });
   };
 
+  updateScore = (game_player_info_id, score) => {
+    fetch(`${SCOREUPDATE}${game_player_info_id}`, {
+      method: "PATCH",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify({ score: score })
+    }).then(resp => console.log(resp));
+  };
+
   unfreezeGame = () => {
     clearInterval(this.state.intervalId);
     this.setState({ intervalId: 0, frozen: false });
@@ -165,6 +174,7 @@ class App extends Component {
             playerOneScore={playerOneScore}
             playerTwoScore={playerTwoScore}
             currentPlayer={currentPlayer}
+            updateScore={this.updateScore}
           />
         )}
       </>

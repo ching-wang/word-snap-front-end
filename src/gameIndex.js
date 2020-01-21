@@ -22,6 +22,15 @@ class GameIndex extends Component {
         this.props.playerOneScore,
         this.props.playerTwoScore
       );
+      this.props.updateScore(
+        this.props.players.game_player_1_info.id,
+        this.props.playerOneScore
+      );
+
+      this.props.updateScore(
+        this.props.players.game_player_2_info.id,
+        this.props.playerTwoScore
+      );
       clearInterval(this.interval);
     }
 
