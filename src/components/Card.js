@@ -60,7 +60,7 @@ class Card extends Component {
           }
         }}
       >
-        <div className="card-body">
+        <div>
           <h3 className="card-title">
             <span
               className={

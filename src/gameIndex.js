@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "./App.css";
 import GameBoard from "./components/GameBoard";
 import Player from "./components/Player";
+import TimeBar from "./components/TimeBar";
+
 class GameIndex extends Component {
   playerOne = this.props.players.game_player_1_info;
   playerTwo = this.props.players.game_player_2_info;
@@ -37,6 +39,7 @@ class GameIndex extends Component {
     } = this.props;
 
     return (
+<TimeBar />
       <div className="container">
         <div className="row">
           <div className="col-1">
@@ -62,7 +65,7 @@ class GameIndex extends Component {
             />
           </div>
         </div>
-      </div>
+      </>
     );
   }
 }

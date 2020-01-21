@@ -19,8 +19,6 @@ class GameBoard extends Component {
       });
     }
 
-    // Shuffle the array of single words.
-    // singleWords.sort(() => 0.5 - Math.random());
 
     return singleWords;
   }
@@ -35,33 +33,24 @@ class GameBoard extends Component {
     } = this.props;
     const singleWords = this.singleWords();
     return (
-      <>
+      <div>
         <div className="container">
-          <div className="row">
-            {singleWords.map((singleWord, i) => {
-              return (
-                <Fragment key={`${singleWord.pairId}-${singleWord.lang}`}>
-                  <div className="col">
-                    <Card
-                      singleWord={singleWord}
-                      handleSelectedCard={handleSelectedCard}
-                      doneCards={doneCards}
-                      handleDoneCard={handleDoneCard}
-                      onWrongCard={onWrongCard}
-                      clickCount={clickCount}
-                    />
-                  </div>
-                  {(i + 1) % 4 === 0 ? (
-                    <div className="w-100 card-row-separator"></div>
-                  ) : (
-                    ""
-                  )}
-                </Fragment>
-              );
-            })}
-          </div>
+          {singleWords.map((singleWord, i) => {
+            return (
+              <Fragment key={`${singleWord.pairId}-${singleWord.lang}`}>
+                <Card
+                  singleWord={singleWord}
+                  handleSelectedCard={handleSelectedCard}
+                  doneCards={doneCards}
+                  handleDoneCard={handleDoneCard}
+                  onWrongCard={onWrongCard}
+                  clickCount={clickCount}
+                />
+              </Fragment>
+            );
+          })}
         </div>
-      </>
+      </div>
     );
   }
 }
