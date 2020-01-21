@@ -1,10 +1,8 @@
 import React, { Component, Fragment } from "react";
 import Card from "./Card";
-
 class GameBoard extends Component {
   singleWords() {
     const { pairsToRender } = this.props;
-
     const singleWords = [];
     for (const pair of pairsToRender) {
       singleWords.push({
@@ -18,11 +16,10 @@ class GameBoard extends Component {
         lang: "chinese"
       });
     }
-
-
+    // Shuffle the array of single words.
+    // singleWords.sort(() => 0.5 - Math.random());
     return singleWords;
   }
-
   render() {
     const {
       handleSelectedCard,
@@ -33,26 +30,24 @@ class GameBoard extends Component {
     } = this.props;
     const singleWords = this.singleWords();
     return (
-      <div>
-        <div className="container">
-          {singleWords.map((singleWord, i) => {
-            return (
-              <Fragment key={`${singleWord.pairId}-${singleWord.lang}`}>
-                <Card
-                  singleWord={singleWord}
-                  handleSelectedCard={handleSelectedCard}
-                  doneCards={doneCards}
-                  handleDoneCard={handleDoneCard}
-                  onWrongCard={onWrongCard}
-                  clickCount={clickCount}
-                />
-              </Fragment>
-            );
-          })}
-        </div>
+      <div className="board-container">
+        {singleWords.map((singleWord, i) => {
+          return (
+            <Fragment key={`${singleWord.pairId}-${singleWord.lang}`}>
+              <Card
+                singleWord={singleWord}
+                handleSelectedCard={handleSelectedCard}
+                doneCards={doneCards}
+                handleDoneCard={handleDoneCard}
+                onWrongCard={onWrongCard}
+                clickCount={clickCount}
+              />
+            </Fragment>
+          );
+        })}
       </div>
+      // </div>
     );
   }
 }
-
 export default GameBoard;
