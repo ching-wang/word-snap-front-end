@@ -3,10 +3,11 @@ import "./App.css";
 import GameBoard from "./components/GameBoard";
 import Player from "./components/Player";
 import TimeBar from "./components/TimeBar";
+import Swal from "sweetalert2";
 
 class GameIndex extends Component {
   state = {
-    time: 5
+    time: 10
   };
 
   componentDidMount() {
@@ -15,13 +16,48 @@ class GameIndex extends Component {
 
   timeCountDown = () => {
     if (this.state.time <= 1) {
-      window.alert("GAME IS OVER! Would you like to play again?");
+      this.showEndGamePopup(
+        this.props.playerOneScore,
+        this.props.playerTwoScore
+      );
       clearInterval(this.interval);
     }
 
     this.setState(prevState => ({
       time: (prevState.time -= 1)
     }));
+  };
+
+  showEndGamePopup = (playerOneScore, playerTwoScore) => {
+    let winner = null;
+    if (playerOneScore - playerTwoScore < 0) {
+      winner = this.props.players.game_player_1_info;
+    }
+    if (playerTwoScore - playerOneScore < 0) {
+      winner = this.props.players.game_player_1_info;
+    }
+
+    return Swal.fire({
+      title:
+        winner === null
+          ? `Hey, it is a TIE`
+          : `Seems like ${winner.player.username} won`,
+      width: 600,
+      padding: "3em",
+      backdrop: `
+        rgba(0,0,123,0.4)
+        url("images/nyan-cat.gif")
+        left top
+        no-repeat
+      `,
+      showCloseButton: true,
+      showCancelButton: true,
+      focusConfirm: false,
+      confirmButtonText: "Play again",
+      confirmButtonAriaLabel: "",
+      cancelButtonText: "Exit",
+      cancelButtonAriaLabel: ""
+    });
   };
 
   // componentDidMount()
