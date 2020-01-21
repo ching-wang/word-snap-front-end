@@ -7,7 +7,9 @@ import Swal from "sweetalert2";
 
 class GameIndex extends Component {
   state = {
-    time: 10
+    currentPlayer: this.playerOne,
+    click: 0,
+    time: 120
   };
 
   componentDidMount() {

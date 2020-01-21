@@ -50,13 +50,13 @@
   background-size: auto 6px;
   background-repeat: repeat-x;
   text-decoration: none; */
-  text-shadow: 0px 0px 0 rgb(208, 138, 28), 1px 1px 0 rgb(165, 123, 26),
-    2px 2px 0 rgb(242, 185, 100), 3px 3px 0 rgb(227, 167, 187),
-    4px 4px 0 rgb(182, 129, 63), 5px 5px 0 rgb(161, 117, 50),
-    6px 6px 0 rgb(144, 103, 39), 7px 7px 0 rgb(130, 91, 31),
-    8px 8px 0 rgb(120, 83, 25), 9px 9px 0 rgb(108, 73, 20),
-    10px 10px 0 rgb(93, 63, 13), 11px 11px 0 rgb(60, 54, 12),
-    12px 12px 0 rgb(63, 41, 8), 13px 13px 0;
+  text-shadow: 0px 0px 0 rgb(208, 138, 28), 2px 2px 0 rgb(165, 123, 26),
+    4px 4px 0 rgb(242, 185, 100), 6px 6px 0 rgb(227, 167, 187),
+    8px 8px 0 rgb(182, 129, 63), 10px 10px 0 rgb(161, 117, 50),
+    12px 12px 0 rgb(144, 103, 39), 14px 14px 0 rgb(130, 91, 31),
+    16px 16px 0 rgb(120, 83, 25), 18px 18px 0 rgb(108, 73, 20),
+    20px 20px 0 rgb(93, 63, 13), 22px 22px 0 rgb(60, 54, 12),
+    24px 24px 0 rgb(63, 41, 8), 26px 26px 0;
 }
 
 .welcome-header {
@@ -65,10 +65,14 @@
   font-size: 4em;
   font-family: "Baloo Bhai", cursive;
   /* font-family: "Rubik Mono One", sans-serif; */
-}
-
-.player-name {
-  font-family: "Luckiest Guy";
+  text-shadow: 0px 0px 0 rgb(208, 138, 28), 1px 1px 0 rgb(165, 123, 26),
+    2px 2px 0 rgb(242, 185, 100), 3px 3px 0 rgb(227, 167, 187),
+    4px 4px 0 rgb(182, 129, 63), 5px 5px 0 rgb(161, 117, 50),
+    6px 6px 0 rgb(144, 103, 39), 7px 7px 0 rgb(130, 91, 31),
+    8px 8px 0 rgb(120, 83, 25), 9px 9px 0 rgb(108, 73, 20),
+    10px 10px 0 rgb(93, 63, 13), 11px 11px 0 rgb(60, 54, 12),
+    12px 12px 0 rgb(63, 41, 8), 13px 13px 0;
+  transition: text-shadow 0.3s ease-in-out;
 }
 
 /* JUMPING Style */
@@ -95,26 +99,23 @@
   overflow: hidden;
   font-family: "Luckiest Guy", cursive;
   font-smoothing: antialiased;
+  background: linear-gradient(
+    to bottom,
+    rgba(61, 114, 180, 0.2),
+    rgba(61, 114, 180, 0)
+  );
+  border-radius: 0.25em;
+  transition: background 0.6s ease;
 }
-/* CLOUDS */
-.animaton-container:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 0;
-  height: 0;
-  margin: auto;
-  border-radius: 100%;
-  background: transparent;
-  display: block;
-  box-shadow: 0 0 150px 100px rgba(255, 255, 255, 0.6),
-    200px 0 200px 150px rgba(255, 255, 255, 0.6),
-    -250px 0 300px 150px rgba(255, 255, 255, 0.6),
-    550px 0 300px 200px rgba(255, 255, 255, 0.6),
-    -550px 0 300px 200px rgba(255, 255, 255, 0.6);
+
+.animaton-container.active-turn {
+  background: linear-gradient(
+    to bottom,
+    rgba(61, 114, 180, 0.9),
+    rgba(61, 114, 180, 0)
+  );
 }
+
 /* JUMP */
 .animaton-container h1 {
   cursor: default;
@@ -132,64 +133,64 @@
 
 .animaton-container h1 span {
   position: relative;
-  top: 200px;
+  top: 150px;
 
   display: inline-flexbox;
   animation: bounce 1s ease infinite alternate;
   font-size: 20px;
-  color: #17a2b8;
+  color: orangered;
   text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc, 0 3px 0 #ccc, 0 4px 0 #ccc,
-    0 5px 0 #ccc, 0 6px 0 transparent, 0 7px 0 transparent, 0 8px 0 transparent,
-    0 9px 0 transparent, 0 10px 10px rgba(0, 0, 0, 0.4);
+    0 5px 0 #ccc, 0 1px 0 transparent, 0 2px 0 transparent, 0 3px 0 transparent,
+    0 4px 0 transparent, 0 10px 10px rgba(0, 0, 0, 0.4);
 }
 
 .animaton-container h1 span:nth-child(2) {
-  animation-delay: 0.1s;
+  animation-delay: 0.05s;
 }
 
 .animaton-container h1 span:nth-child(3) {
-  animation-delay: 0.2s;
+  animation-delay: 0.1s;
 }
 
 .animaton-container h1 span:nth-child(4) {
-  animation-delay: 0.3s;
+  animation-delay: 0.15s;
 }
 
 .animaton-container h1 span:nth-child(5) {
-  animation-delay: 0.4s;
-}
-
-.animaton-container h1 span:nth-child(6) {
-  animation-delay: 0.5s;
-}
-
-.animaton-container h1 span:nth-child(7) {
-  animation-delay: 0.6s;
-}
-
-.animaton-container h1 span:nth-child(8) {
   animation-delay: 0.2s;
 }
 
-.animaton-container h1 span:nth-child(9) {
+.animaton-container h1 span:nth-child(6) {
+  animation-delay: 0.25s;
+}
+
+.animaton-container h1 span:nth-child(7) {
   animation-delay: 0.3s;
 }
+
+.animaton-container h1 span:nth-child(8) {
+  animation-delay: 0.1s;
+}
+
+.animaton-container h1 span:nth-child(9) {
+  animation-delay: 0.15s;
+}
 .animaton-container h1 span:nth-child(10) {
-  animation-delay: 0.4s;
+  animation-delay: 0.2s;
 }
 
 .animaton-container h1 span:nth-child(11) {
-  animation-delay: 0.5s;
+  animation-delay: 0.25s;
 }
 
 .animaton-container h1 span:nth-child(12) {
-  animation-delay: 0.6s;
+  animation-delay: 0.3s;
 }
 
 /* ANIMATION */
 @keyframes bounce {
   100% {
-    top: -20px;
+    top: 50px;
     text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc, 0 3px 0 #ccc, 0 4px 0 #ccc,
       0 5px 0 #ccc, 0 6px 0 #ccc, 0 7px 0 #ccc, 0 8px 0 #ccc, 0 9px 0 #ccc,
       0 50px 25px rgba(0, 0, 0, 0.2);
@@ -206,4 +207,27 @@
   color: #17a2b8;
   font-size: large;
   font-weight: bold;
+}
+
+.player-name {
+  font-family: "Luckiest Guy";
+  font-size: 1.8em;
+  color: whitesmoke;
+  overflow-wrap: break-word;
+  padding: 1em 0.1em;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+.active-turn > .player-name {
+  animation-name: player-name-active-turn;
+}
+
+@keyframes player-name-active-turn {
+  0% {
+    color: orange;
+  }
+  100% {
+    color: white;
+  }
 }
