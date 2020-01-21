@@ -41,7 +41,7 @@ class GameIndex extends Component {
     return (
       <>
         <TimeBar />
-        <div className="container game-board">
+        <div className="container">
           <div className="row">
             <div className="col-1">
               <Player
