@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 export class Player extends Component {
   render() {
-    const { playerInfo, playerScore } = this.props;
+    const { playerInfo, playerScore, currentPlayer } = this.props;
     return (
       <div>
         <div

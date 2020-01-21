@@ -3,11 +3,9 @@ import "./App.css";
 import GameBoard from "./components/GameBoard";
 import Player from "./components/Player";
 import TimeBar from "./components/TimeBar";
+import Swal from "sweetalert2";
 
 class GameIndex extends Component {
-  playerOne = this.props.players.game_player_1_info;
-  playerTwo = this.props.players.game_player_2_info;
-
   state = {
     currentPlayer: this.playerOne,
     click: 0,
@@ -20,7 +18,10 @@ class GameIndex extends Component {
 
   timeCountDown = () => {
     if (this.state.time <= 1) {
-      window.alert("GAME IS OVER! Would you like to play again?");
+      this.showEndGamePopup(
+        this.props.playerOneScore,
+        this.props.playerTwoScore
+      );
       clearInterval(this.interval);
     }
 
@@ -29,24 +30,39 @@ class GameIndex extends Component {
     }));
   };
 
+  showEndGamePopup = (playerOneScore, playerTwoScore) => {
+    let winner = null;
+    if (playerOneScore - playerTwoScore < 0) {
+      winner = this.props.players.game_player_1_info;
+    }
+    if (playerTwoScore - playerOneScore < 0) {
+      winner = this.props.players.game_player_1_info;
+    }
+
+    return Swal.fire({
+      title:
+        winner === null
+          ? `Hey, it is a TIE`
+          : `Seems like ${winner.player.username} won`,
+      width: 600,
+      padding: "3em",
+      backdrop: `
+        rgba(0,0,123,0.4)
+        url("images/nyan-cat.gif")
+        left top
+        no-repeat
+      `,
+      showCloseButton: true,
+      showCancelButton: true,
+      focusConfirm: false,
+      confirmButtonText: "Play again",
+      confirmButtonAriaLabel: "",
+      cancelButtonText: "Exit",
+      cancelButtonAriaLabel: ""
+    });
+  };
+
   // componentDidMount()
-
-  handleClickCount = () => {
-    if (this.state.click === 0) {
-      this.setState({ click: 1 });
-    } else {
-      this.changePlayer();
-      this.setState({ click: 0 });
-    }
-  };
-
-  changePlayer = () => {
-    if (this.state.currentPlayer === this.playerOne) {
-      this.setState({ currentPlayer: this.playerTwo });
-    } else {
-      this.setState({ currentPlayer: this.playerOne });
-    }
-  };
 
   render() {
     const {
@@ -56,7 +72,9 @@ class GameIndex extends Component {
       handleDoneCard,
       onWrongCard,
       playerOneScore,
-      playerTwoScore
+      playerTwoScore,
+      currentPlayer,
+      players
     } = this.props;
 
     return (
@@ -66,8 +84,8 @@ class GameIndex extends Component {
           <div className="row">
             <div className="col-1">
               <Player
-                playerInfo={this.playerOne}
-                currentPlayer={this.state.currentPlayer}
+                playerInfo={players.game_player_1_info}
+                currentPlayer={currentPlayer}
                 playerScore={playerOneScore}
               />
             </div>
@@ -78,13 +96,12 @@ class GameIndex extends Component {
                 doneCards={doneCards}
                 handleDoneCard={handleDoneCard}
                 onWrongCard={onWrongCard}
-                clickCount={this.handleClickCount}
               />
             </div>
             <div className="col-1">
               <Player
-                playerInfo={this.playerTwo}
-                currentPlayer={this.state.currentPlayer}
+                playerInfo={players.game_player_2_info}
+                currentPlayer={currentPlayer}
                 playerScore={playerTwoScore}
               />
             </div>
