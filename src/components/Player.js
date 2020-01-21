@@ -6,6 +6,9 @@ export class Player extends Component {
     return (
       <div>
         <h5>{playerInfo.player.username}</h5>
+        <p>
+          {this.props.currentPlayer === playerInfo ? "It is your turn" : null}
+        </p>
       </div>
     );
   }

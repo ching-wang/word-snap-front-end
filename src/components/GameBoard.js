@@ -30,7 +30,8 @@ class GameBoard extends Component {
       handleSelectedCard,
       doneCards,
       handleDoneCard,
-      onWrongCard
+      onWrongCard,
+      clickCount
     } = this.props;
     const singleWords = this.singleWords();
     return (
@@ -47,6 +48,7 @@ class GameBoard extends Component {
                       doneCards={doneCards}
                       handleDoneCard={handleDoneCard}
                       onWrongCard={onWrongCard}
+                      clickCount={clickCount}
                     />
                   </div>
                   {(i + 1) % 4 === 0 ? (
