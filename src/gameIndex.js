@@ -42,7 +42,7 @@ class GameIndex extends Component {
   showEndGamePopup = (playerOneScore, playerTwoScore) => {
     let winner = null;
     if (playerOneScore - playerTwoScore < 0) {
-      winner = this.props.players.game_player_1_info;
+      winner = this.props.players.game_player_2_info;
     }
     if (playerTwoScore - playerOneScore < 0) {
       winner = this.props.players.game_player_1_info;
