@@ -5,8 +5,8 @@ import GameIndex from "./gameIndex";
 import LoginForm from "./components/LoginForm";
 import { getPairs } from "./API";
 
-const NewGame = "http://localhost:3000/newgame";
-const SCOREUPDATE = "http://localhost:3000/player_games/";
+const NewGame = "https://word-snap.herokuapp.com/newgame";
+const SCOREUPDATE = "https://word-snap.herokuapp.com/player_games/";
 
 class App extends Component {
   state = {

@@ -1,4 +1,4 @@
-const apiEndpoint = "http://localhost:3000";
+const apiEndpoint = "https://word-snap.herokuapp.com";
 const pair_API = apiEndpoint + `/pairs`;
 
 export const getPairs = async () => {
