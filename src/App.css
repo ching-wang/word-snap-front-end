@@ -138,7 +138,7 @@
   display: inline-flexbox;
   animation: bounce 1s ease infinite alternate;
   font-size: 20px;
-  color: orangered;
+  color: ;
   text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc, 0 3px 0 #ccc, 0 4px 0 #ccc,
     0 5px 0 #ccc, 0 1px 0 transparent, 0 2px 0 transparent, 0 3px 0 transparent,
     0 4px 0 transparent, 0 10px 10px rgba(0, 0, 0, 0.4);
@@ -211,7 +211,7 @@
 
 .player-name {
   font-family: "Luckiest Guy";
-  font-size: 1.8em;
+  font-size: 1.5em;
   color: whitesmoke;
   overflow-wrap: break-word;
   padding: 1em 0.1em;

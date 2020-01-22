@@ -46,8 +46,6 @@ class App extends Component {
         lang: "chinese"
       });
     }
-    // Shuffle the array of single words.
-
     return singleWords;
   };
 
@@ -88,7 +86,7 @@ class App extends Component {
       return;
     }
 
-    this.frozeGameFor(0.5, () => {
+    this.frozeGameFor(1, () => {
       let cardsWithoutLastSelectedTwo = this.removeLastTwoCards();
       this.setState({
         doneCards: cardsWithoutLastSelectedTwo
